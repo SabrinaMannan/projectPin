@@ -24,7 +24,7 @@ document.getElementById('keypad').addEventListener('click',
         const calcInput = document.getElementById('typed-number');
         if (isNaN(number)) {
             if (number == 'C') {
-                calcInput.value = '';
+                calcInput.value = ''; //refresh then numbers
             }
         }
         else {
@@ -34,4 +34,21 @@ document.getElementById('keypad').addEventListener('click',
             calcInput.value = newNumber;
         }
 
-    })
+    });
+
+function verifyPin() {
+    const pin = document.getElementById('display-pin').value;
+    const typednumbers = document.getElementById('typed-number').value;
+    const successMessage = document.getElementById('notify-success');
+    const failError = document.getElementById('notify-fail');
+    if (pin == typednumbers) {
+        //if succeed error message will disappear and vice versa
+        successMessage.style.display = 'block';
+        failError.style.display = 'none';
+    }
+    else {
+
+        failError.style.display = 'block';
+        successMessage.style.display = 'none';
+    }
+}
